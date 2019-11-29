@@ -44,11 +44,8 @@ def soldado_loop():
     teste_dir = 1
     # testa para o pulo
     teste_pulo = False
-
-    ##########
     # boost
     boost = 0
-    ##########
 
     while True:
         tela.fill((0, 0, 0))
@@ -123,13 +120,12 @@ def mct_loop():
                      airW=128,
                      airH=128,
                      airImg=pygame.image.load('Img/aviao/MCT.png'))
-    ##########
+    # tração dos motores do avião
     tracao = 0
+    # ângulo de ataque do avião
     angulo = 0
-    ##########
 
     while True:
-
         tela.fill((0, 0, 0))
 
         # tratamento dos eventos
@@ -181,6 +177,5 @@ def mct_loop():
 
 if __name__ == '__main__':
     game_start()
-
     pygame.quit()
     quit()

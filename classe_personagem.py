@@ -43,26 +43,22 @@ class Soldado(object):
 
     # Atualiza a posição VERTICAL do personagem
     def pulo(self):
-
+        # Cálculo da velocidade VERTICAL do personagem
         self.perVelY += self.perAY * (1 / 60)
+        # Cálculo da posição VERTICAL do personagem
         self.perY += self.perVelY * (1 / 60) + 0.5 * self.perAY * ((1 / 60) ** 2)
-
+        # Limita a imagem inferiormente
         if self.perY > alturaTela - self.perH:
             self.perY = alturaTela - self.perH
             self.perVelY = 0
-
-        elif self.perY < 0:
-            self.perY = 0
-            self.perVelY = 0
-
         return True
 
     # trocar os frames do personagem
     def troca_frames(self, esquerda, direita, teste_dir, teste_pulo):
-        # contador
+        # contador andando
         if self.count + 1 >= 18:
             self.count = 0
-
+        # contador pulando
         if self.count_p + 1 >= 36:
             self.count_p = 0
 
@@ -76,7 +72,6 @@ class Soldado(object):
             if esquerda:
                 tela.blit(framesPuloE[self.count_p // 6], (self.perX, self.perY))
                 self.count_p += 1
-
             elif direita:
                 tela.blit(framesPulo[self.count_p // 6], (self.perX, self.perY))
                 self.count_p += 1
@@ -87,7 +82,6 @@ class Soldado(object):
                 if teste_dir == 0:
                     tela.blit(framesPuloE[self.count_p // 6], (self.perX, self.perY))
                     self.count_p += 1
-
                 elif teste_dir == 1:
                     tela.blit(framesPulo[self.count_p // 6], (self.perX, self.perY))
                     self.count_p += 1
